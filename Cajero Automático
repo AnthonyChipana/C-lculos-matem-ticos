@@ -1,0 +1,56 @@
+class Billetes
+{
+  constructor(c,v)
+  {
+    this.cantidad = c
+    this.valor = v
+  }
+}
+
+function entregarBilletes()
+{
+  var d = document.getElementById("cantidad");
+  var dinero = parseInt(d.value);
+
+  for(var bi of caja)
+  {
+    if(dinero > 0)
+   {
+      div = Math.floor(dinero/bi.valor);
+
+      if (div < bi.cantidad)
+      {
+       papeles = div ;
+      }
+      else
+      {
+       papeles = bi.cantidad;
+      }
+      entrega.push(new Billetes(papeles,bi.valor));
+      dinero=dinero-(papeles*bi.valor);
+   }
+  }
+    if(dinero > 0)
+   {
+   resultado.innerHTML="no tengo dinero,mi causita :C";
+   }
+   else
+   {
+     for(e of entrega)
+     {
+       resultado.innerHTML= resultado.innerHTML +  e.cantidad + " billetes de $" + e.valor + "<br />";
+     }
+   }
+  }
+
+
+var caja =[];
+var entrega=[];
+
+caja.push(new Billetes(50,10));
+caja.push(new Billetes(30,7));
+caja.push(new Billetes(3,100));
+var resultado = document.getElementById("resultado");
+var entrega = document.getElementById("entrega");
+var d=document.getElementById("extraer");
+d.addEventListener("click",entregarBilletes);
